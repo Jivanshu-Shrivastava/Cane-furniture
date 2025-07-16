@@ -1,0 +1,406 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dream of Royal's - Cane Furniture & Handicrafts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ffcc00;
+      --dark: #0f0f0f;
+      --medium: #1b1b1b;
+      --light-text: #fff;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--dark);
+      color: var(--light-text);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, var(--medium), var(--primary));
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      height: 2px;
+      background: white;
+      width: 0;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      transition: 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      color: var(--primary);
+      text-align: center;
+    }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .product {
+      background: #1c1c1c;
+      border-radius: 10px;
+      padding: 1rem;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.08);
+    }
+    .product:hover {
+      transform: translateY(-5px);
+    }
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product h3 {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    .product p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    .btn {
+      background: var(--primary);
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      display: inline-block;
+      transition: background 0.3s;
+      margin-top: 1rem;
+    }
+    .btn:hover {
+      background: #e6b800;
+    }
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .contact-details, .glass-form {
+      flex: 1;
+      min-width: 300px;
+    }
+    .glass-form {
+      background: var(--glass-bg);
+      border-radius: 20px;
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      padding: 2rem;
+    }
+    .glass-form input,
+    .glass-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1rem;
+    }
+    .glass-form button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .carousel-container {
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+    .carousel-slide {
+      min-width: 100%;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 1rem;
+    }
+    .carousel-buttons button {
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+    }
+    .floating-icons {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .icon-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border-radius: 10px 0 0 10px;
+      padding: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 45px;
+      height: 45px;
+    }
+    .icon-link img {
+      width: 24px;
+      height: 24px;
+    }
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .carousel-slide img {
+        height: 250px;
+      }
+      .carousel-buttons button {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Dream of Royal's</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+ <section id="home" class="section" >
+
+  
+  <div class="hero" >
+    <h2>Cane Furniture, Handicrafts & Baskets</h2>
+  </div>
+ <h1>Our Showcase</h1>
+  <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide"><img src="Images/sofa.jpg" alt="Furniture 1"></div>
+      <div class="carousel-slide"><img src="Images/table.jpg" alt="Furniture 2"></div>
+      <div class="carousel-slide"><img src="Images/basket.jpg" alt="Furniture 3"></div>
+      <div class="carousel-slide"><img src="Images/table.jpg" alt="Furniture 4"></div>
+    </div>
+    <div class="carousel-buttons">
+      <button onclick="moveSlide(-1)">&#10094;</button>
+      <button onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+<!-- Floating Side Icons -->
+<div class="floating-icons">
+  <a href="https://www.instagram.com/dcane_furniture_dreamofroyals/?igsh=bTJuZTNhdWYycTNj#" target="_blank" class="icon-link instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+  </a>
+  <a href="https://wa.me/918839148499" target="_blank" class="icon-link whatsapp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  </a>
+</div>
+
+</section>
+
+
+ 
+
+<script>
+  let slideIndex = 0;
+  const track = document.getElementById('carouselTrack');
+  const slides = document.querySelectorAll('.carousel-slide');
+
+  function moveSlide(direction) {
+    slideIndex += direction;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    if (slideIndex >= slides.length) slideIndex = 0;
+    track.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }
+
+  setInterval(() => moveSlide(1), 4000); // Auto-slide every 4s
+</script>
+
+  <section class="section" id="products">
+    <h2>Our Products</h2>
+    <div class="products">
+      <div class="product">
+        <img src="Images/sofa.jpg" alt="Cane Sofa" />
+        <h3>Cane Sofa</h3>
+        <p>Royal comfort in eco-friendly design.</p>
+      </div>
+      <div class="product">
+        <img src="Images/basket.jpg" alt="Cane Basket" />
+        <h3>Cane Basket</h3>
+        <p>Handwoven for elegance and utility.</p>
+      </div>
+      <div class="product">
+        <img src="Images/table.jpg" alt="Cane Table" />
+        <h3>Cane Table</h3>
+        <p>Perfect balance of style and durability.</p>
+      </div>
+    </div>
+  </section>
+
+ <section class="section" id="about">
+  <h2>About Us</h2>
+  <p>
+    <strong>Dream of Royal's</strong> is a locally trusted furniture brand based in Bhopal, known for premium handcrafted cane furniture, baskets, and elegant home decor. We combine tradition with customization to craft furniture pieces that reflect both comfort and royalty.
+  </p>
+  <br/>
+  <h3 style="color: var(--primary); font-size: 1.3rem;">✨ Services We Offer</h3>
+  <ul style="text-align: left; max-width: 800px; margin: 1.5rem auto; line-height: 1.8; list-style: square inside;">
+    <li><strong>Customization:</strong> We create furniture based on your needs, taste, and space – your vision, our craftsmanship.</li>
+    <li><strong>On-Door Services:</strong> From consultation to delivery, we bring comfort right to your doorstep.</li>
+    <li><strong>Furniture Guarantee:</strong> Our products come with durability and satisfaction guarantees you can rely on.</li>
+  </ul>
+
+  <p style="margin-top: 1rem; font-style: italic; color: #ccc;">
+    <strong>Note:</strong> We never compromise on quality or the services we provide.
+  </p>
+
+  <p style="margin-top: 2rem; font-weight: bold; font-size: 1.1rem; color: var(--primary);">
+    Your Trustworthy Friend,<br/>
+    Himanshu Singh
+  </p>
+</section>
+
+
+  <section class="section glass-form row" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-wrapper ">
+      <div class="contact-details col-6 p-2">
+        <div class="contact-item"><strong>Owner:</strong> Himanshu Singh</div>
+        <div class="contact-item">📍 Shop No. 22, 23 PNT Square, Bhopal</div>
+        <div class="contact-item">📞 8839148499 | 8719946145</div>
+        <div class="contact-item">
+  <i class="fab fa-instagram"></i>
+  <a href="https://instagram.com/dcane_furniture_dreamofreyals" target="_blank">@dcane_furniture_dreamofreyals</a>
+</div>
+
+<a class="btn" href="https://wa.me/918839148499" target="_blank">
+  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+</a>
+
+<a class="btn" href="https://g.page/r/CUzR6cT6hKaEEAE/review" target="_blank">
+  <i class="fas fa-star"></i> Leave a Review
+</a>
+
+      </div>
+
+      <form class=" col-6" name="Furniture">
+        <h3>Send Us a Message</h3>
+        <input type="text" name="Name" placeholder="Your Name" required />
+        <input type="email" name="Email" placeholder="Your Email" required />
+        <textarea name="Message" rows="5" placeholder="Your Message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Dream of Royal's | Cane Furniture & Handicrafts | All Rights Reserved
+  </footer>
+
+  <script>
+    //const scriptURL = 'https://script.google.com/macros/s/AKfycbw47xGpu2AVAIbGu9ALI9-TQSzQQTXzAAumXer5Fpw8LCgVQXdrleQgqTpI44HcLiKC/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxZkmAQkVJXoIwf2VdadHbxN4nSxT5PclinAAGSP060LrQkhneC_Z1mVOaV0x0nLr9o/exec';
+    
+
+    const form = document.forms['Furniture'];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          alert('Thank you! Your message has been sent.');
+          form.reset();
+        })
+        .catch(error => console.error('Error!', error.message));
+    });
+  </script>
+
+</body>
+</html>
